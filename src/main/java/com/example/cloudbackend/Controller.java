@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin(originPatterns = "*")
 @Transactional
@@ -26,7 +28,7 @@ public class Controller {
     }
 
     @GetMapping("/fetch")
-    public @ResponseBody ContentObject fetch(){
-        return new ContentObject();
+    public @ResponseBody List<ContentObject> fetch() {
+        return contentObjectRepository.findAll();
     }
 }
